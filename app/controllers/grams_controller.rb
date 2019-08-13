@@ -42,7 +42,7 @@ class GramsController < ApplicationController
       return render_not_found if @gram.blank?
       return render_not_found(:forbidden) if @gram.user != current_user
     end
-  
+
     def create
       @gram = current_user.grams.create(gram_params)
       if @gram.valid?
@@ -50,6 +50,7 @@ class GramsController < ApplicationController
       else
         render :new, status: :unprocessable_entity
       end
+    end
     end
   
     private
@@ -62,7 +63,7 @@ class GramsController < ApplicationController
         render plain: "#{status.to_s.titleize} :(", status: status
       end
 
-  end
+  
 
 
 
